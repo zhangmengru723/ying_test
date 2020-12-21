@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "087e8770-6255-4073-911a-22ca0235e6e9",
+		"name": "影视API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "影视大全接口",
+			"item": [
+				{
+					"name": "有效",
+					"item": [
+						{
+							"name": "今日放映的影片",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// var aa = pm.response.json();\r",
+											"// //采用的原理是：把需要的数据提取出来赋值给一个变量，然后把这个变量变成全局或是局部\r",
+											"// //设置局部变量   movie=aa[\"result\"][1][\"movieId\"]\r",
+											"// pm.environment.set(\"movie\", aa[\"result\"][1][\"movieId\"]);\r",
+											"// //设置全局变量\r",
+											"// pm.globals.set(\"movie\", aa[\"result\"][1][\"movieId\"]);\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://v.juhe.cn/movie/movies.today?key={{key_id}}&cityid=10",
+									"protocol": "http",
+									"host": [
+										"v",
+										"juhe",
+										"cn"
+									],
+									"path": [
+										"movie",
+										"movies.today"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key_id}}"
+										},
+										{
+											"key": "cityid",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ID检索影片的信息",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reason).to.eql(\"当前可请求的次数不足\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://v.juhe.cn/movie/query?key={{key_id}}&movieid={{heiheihei}}",
+									"protocol": "http",
+									"host": [
+										"v",
+										"juhe",
+										"cn"
+									],
+									"path": [
+										"movie",
+										"query"
+									],
+									"query": [
+										{
+											"key": "mi",
+											"value": null,
+											"disabled": true
+										},
+										{
+											"key": "key",
+											"value": "{{key_id}}"
+										},
+										{
+											"key": "movieid",
+											"value": "{{heiheihei}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "无效",
+					"item": [
+						{
+							"name": "ID检索影片的信息 Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.reason).to.eql(\"当前可请求的次数不足\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://v.juhe.cn/movie/query?key={{key_id}}&movieid={{hahahahahahaha}}",
+									"protocol": "http",
+									"host": [
+										"v",
+										"juhe",
+										"cn"
+									],
+									"path": [
+										"movie",
+										"query"
+									],
+									"query": [
+										{
+											"key": "mi",
+											"value": null,
+											"disabled": true
+										},
+										{
+											"key": "key",
+											"value": "{{key_id}}"
+										},
+										{
+											"key": "movieid",
+											"value": "{{hahahahahahaha}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
